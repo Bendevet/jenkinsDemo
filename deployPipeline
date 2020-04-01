@@ -1,9 +1,17 @@
 pipeline{
    agent any
+   environment{
+   PATH = "$PATH"
+   }
    stages{
      stage("development"){
        steps{
          git credentialsId: 'bendevet-demo-jenkins', url: 'https://github.com/Bendevet/jenkinsDemo.git'
+       }
+     }
+     stage("maven"){
+       steps{
+         sh "mvn clean package"
        }
      }
    }
