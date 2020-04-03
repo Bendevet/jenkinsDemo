@@ -1,8 +1,5 @@
 pipeline{
    agent any
-   environment{
-   PATH = "/Users/mac/documents/apache-maven-3.6.3/bin"
-   }
    stages{
      stage("development"){
        steps{
