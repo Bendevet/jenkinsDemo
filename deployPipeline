@@ -1,5 +1,8 @@
 pipeline{
    agent any
+   environment{
+     PATH= "/usr/local/opt/MAVEN_HOME"
+   }
    stages{
      stage("development"){
        steps{
