@@ -1,6 +1,8 @@
-def mvnHome = tool name: 'maven@3.6', type: 'maven'
 pipeline{
    agent any
+   environment {
+    mvnHome = tool name: 'maven@3.6', type: 'maven'
+   }
    stages{
      stage("development"){
        steps{
