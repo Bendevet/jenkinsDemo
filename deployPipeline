@@ -1,10 +1,15 @@
 pipeline{
-   agent any
+   agent { docker { image 'maven:3.3.3' } }
    stages{
      stage("development"){
        steps{
          git credentialsId: 'bendevet-demo-jenkins', url: 'https://github.com/Bendevet/jenkinsDemo.git'
        }
      }
+     stage('build') {
+            steps {
+                sh 'mvn --version'
+            }
+        }
    }
 }
