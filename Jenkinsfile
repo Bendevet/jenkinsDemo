@@ -1,14 +1,14 @@
 pipeline{
-   agent {
-   docker {
-            image 'maven:3-alpine'
-            args '-v $HOME/.m2:/root/.m2'
-        }
-    }
+   agent any
    //environment {
     //mvnHome = tool name: 'maven@3.6', type: 'maven'
    //}
    stages{
+      stage("init"){
+         def dockerHome = tool 'myDocker'
+         def mavenHome  = tool 'myMaven'
+         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+      }
      stage("development"){
        steps{
         git credentialsId: 'bendevet', url: 'https://github.com/Bendevet/jenkinsDemo.git'
@@ -16,7 +16,7 @@ pipeline{
      }
      stage('build') {
             steps {
-                sh "mvn -B -DskipTests clean package"
+                sh "mvn clean package"
             }
         }
    }
