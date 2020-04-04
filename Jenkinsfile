@@ -1,17 +1,22 @@
 pipeline{
-   agent any
-   environment {
-    mvnHome = tool name: 'maven@3.6', type: 'maven'
-   }
+   agent {
+        docker {
+            image '3.6.3-jdk-11-openj9' 
+            args '-v /root/.m2:/root/.m2' 
+        }
+    }
+   //environment {
+    //mvnHome = tool name: 'maven@3.6', type: 'maven'
+   //}
    stages{
      stage("development"){
        steps{
-         git credentialsId: 'bendevet-demo-jenkins', url: 'https://github.com/Bendevet/jenkinsDemo.git'
+         git credentialsId: 'bendevet-demo', url: 'https://github.com/Bendevet/jenkinsDemo.git'
        }
      }
      stage('build') {
             steps {
-                sh "${mvnHome}/bin/mvn clean package"
+                sh "mvn clean package"
             }
         }
    }
