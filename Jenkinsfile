@@ -11,7 +11,7 @@ pipeline{
    stages{
      stage("development"){
        steps{
-        it credentialsId: 'Bendevet', url: 'https://github.com/Bendevet/jenkinsDemo.git'
+        git credentialsId: 'Bendevet', url: 'https://github.com/Bendevet/jenkinsDemo.git'
        }
      }
      stage('build') {
