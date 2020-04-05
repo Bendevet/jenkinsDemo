@@ -5,9 +5,9 @@ pipeline{
             args '-v /root/.m2:/root/.m2'
         }
     }
-   environment {
-    mvnHome = tool name: 'myMaven', type: 'maven'
-   }
+  // environment {
+   // mvnHome = tool name: 'myMaven', type: 'maven'
+  // }
    stages{
       //stage("init"){
         // steps{
@@ -23,7 +23,7 @@ pipeline{
      }
      stage('build') {
             steps {
-               sh "${mvnHome}/bin/mvn clean package"
+               sh "mvn clean package"
             }
         }
    }
