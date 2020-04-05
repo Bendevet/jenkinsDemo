@@ -21,10 +21,10 @@ pipeline{
        git credentialsId: 'bendevet', url: 'https://github.com/Bendevet/jenkinsDemo.git'
        }
      }
-    // stage('build') {
-          //  steps {
-          //     sh "${mvnHome}/bin/mvn clean package"
-         //   }
-       // }
+     stage('build') {
+            steps {
+               sh "${mvnHome}/bin/mvn clean package"
+            }
+        }
    }
 }
