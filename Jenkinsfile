@@ -25,7 +25,8 @@ pipeline{
      stage('build') {
             steps {
                //sh "mvn clean package"
-               sh "docker build -t ${imageName} -f Dockerfile ./"
+               sh "docker build -t bendevetJenkins:v1 -f Dockerfile ./"
+               echo "image built successfully"
             }
         }
    }
