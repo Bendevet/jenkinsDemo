@@ -23,9 +23,16 @@ pipeline{
        }
      }
      stage('build') {
+            agent {
+                 docker {
+                 image 'maven:3-alpine' 
+                 args '-v /root/.m2:/root/.m2' 
+               }
             steps {
-               //sh "mvn clean package"
-               sh "docker build -t bendevetJenkins:v1 -f Dockerfile ./"
+              
+          }
+               sh "mvn clean package"
+               //sh "docker build -t bendevetJenkins:v1 -f Dockerfile ./"
                echo "image built successfully"
             }
         }
