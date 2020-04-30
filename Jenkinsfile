@@ -23,6 +23,7 @@ pipeline{
        }
      }
      stage('build') {
+       when { branch 'master' }
             agent {
                  docker {
                  image 'maven:3-alpine' 
