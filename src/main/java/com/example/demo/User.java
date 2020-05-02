@@ -15,6 +15,10 @@ public class User {
     public String getName() {
         return name;
     }
+    
+    public String getStar(){
+        return "start";
+    }
 
     public void setName(String name) {
         this.name = name;
