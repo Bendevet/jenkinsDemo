@@ -17,7 +17,7 @@ public class User {
     }
     
     public String getStar(){
-        return "start";
+        return "start h";
     }
 
     public void setName(String name) {
